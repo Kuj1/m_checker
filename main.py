@@ -2,7 +2,7 @@ import requests
 import os
 
 # Creating directory
-dir_path = f'{os.getcwd()}/processed_emails'
+dir_path = os.path.join(os.getcwd(), 'processed_emails')
 
 if not os.path.exists(dir_path):
     os.mkdir(dir_path)
@@ -38,22 +38,22 @@ def main() -> None:
 
             poor_state = response.text.split(',')[3].split(':')[-1].replace('"', '')
             if poor_state == 'VerifyPhone':
-                with open(f'{dir_path}/verify_phone.txt', 'a') as file:
+                with open(os.path.join(dir_path, 'verify_phone.txt'), 'a') as file:
                     file.write(f'{check_line}\n')
             elif poor_state == 'NotExist':
-                with open(f'{dir_path}/not_exist.txt', 'a') as file:
+                with open(os.path.join(dir_path, 'not_exist.txt'), 'a') as file:
                     file.write(f'{check_line}\n')
             elif poor_state == 'Disable':
-                with open(f'{dir_path}/disable.txt', 'a') as file:
+                with open(os.path.join(dir_path, 'disable.txt'), 'a') as file:
                     file.write(f'{check_line}\n')
             elif poor_state == 'Disable|NotExist':
-                with open(f'{dir_path}/other.txt', 'a') as file:
+                with open(os.path.join(dir_path, 'disable_or_not_exist.txt'), 'a') as file:
                     file.write(f'{check_line}\n')
             elif poor_state == 'Ok':
-                with open(f'{dir_path}/ok.txt', 'a') as file:
+                with open(os.path.join(dir_path, 'ok.txt'), 'a') as file:
                     file.write(f'{check_line}\n')
 
-            with open(f'{dir_path}/log.txt', 'a') as log:
+            with open(os.path.join(dir_path, 'log.txt'), 'a') as log:
                 log.write(f'{response.text}\n')
         print('Checking emails is completed!')
 
