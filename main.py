@@ -14,7 +14,7 @@ file_input = str(input('Enter file name: '))
 
 def main() -> None:
     """
-    Checker email, with use api ychecker.com
+    Checker email, with use api 'ychecker.com'
     :return: None
     """
     with open(f'{file_input}', 'r') as doc:
@@ -36,7 +36,6 @@ def main() -> None:
 
             response = requests.request("GET", url, headers=headers, params=querystring)
 
-            print(response.text)
             poor_state = response.text.split(',')[3].split(':')[-1].replace('"', '')
             if poor_state == 'VerifyPhone':
                 with open(f'{dir_path}/verify_phone.txt', 'a') as file:
@@ -56,6 +55,7 @@ def main() -> None:
 
             with open(f'{dir_path}/log.txt', 'a') as log:
                 log.write(f'{response.text}\n')
+        print('Checking emails is completed!')
 
 
 if __name__ == '__main__':
