@@ -1,19 +1,12 @@
 import os
-from collections.abc import Iterable
-from typing import Any
 
 import requests
 from fake_useragent import UserAgent
+from pyfiglet import Figlet
+
 
 UA = UserAgent(verify_ssl=True)
 URL = "https://public-sonjj.p.rapidapi.com/email-checker"
-
-dir_path = os.path.join(os.getcwd(), 'processed_emails')
-
-if not os.path.exists(dir_path):
-    os.mkdir(dir_path)
-
-file_input = str(input('Enter file name: '))
 
 headers = {
     'X-RapidAPI-Host': 'public-sonjj.p.rapidapi.com',
@@ -22,8 +15,23 @@ headers = {
     'User-Agent': f'{UA.random}'
 }
 
+dir_path = os.path.join(os.getcwd(), 'processed_emails')
 
-def proxy_mover(number):
+if not os.path.exists(dir_path):
+    os.mkdir(dir_path)
+
+title = Figlet(font='chunky')
+print(title.renderText('e-Mail  checker'))
+
+file_input = str(input('Enter file name: '))
+
+
+def proxy_mover(number: int) -> dict:
+    """
+    Function moves on proxy an return it
+    :param number: number of proxy
+    :return: dict with proxy
+    """
     with open('proxy.txt', 'r') as proxy:
         proxy_list = [x.replace('\n', '') for x in proxy]
         if number <= len(proxy_list):
