@@ -105,6 +105,12 @@ def main() -> None:
                 with open(os.path.join(dir_path, 'log.txt'), 'a') as log:
                     log.write(f'{response.text}\n')
 
+                with open('used_proxy.txt', 'a') as used:
+                    used.write(f'\n{proxy.values()}')
+
+                count = 0
+                number += 1
+
             print(f'\nNumber of proxy: {number}\t\t Proxy: {proxy}\t\t Processed emails: {count}')
             print(response.text)
             total += 1
