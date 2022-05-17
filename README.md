@@ -4,7 +4,7 @@
 - В терминале, перейдите в директории со скриптом -> скопируйте и выполните скрипт ниже:
 ```bash
     virtualenv venv && \
-    . venv/bin/activate && \
+    source venv/bin/activate && \
     pip install -r requirements.txt
 ```
 
