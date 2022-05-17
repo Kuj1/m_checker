@@ -84,19 +84,19 @@ def main() -> None:
                 poor_state = response.text.split(',')[3].split(':')[-1].replace('"', '')
                 if poor_state == 'VerifyPhone':
                     with open(os.path.join(dir_path, 'verify_phone.txt'), 'a') as file:
-                        file.write(f'{check_line}\n')
+                        file.write(f'{check_line}')
                 elif poor_state == 'NotExist':
                     with open(os.path.join(dir_path, 'not_exist.txt'), 'a') as file:
-                        file.write(f'{check_line}\n')
+                        file.write(f'{check_line}')
                 elif poor_state == 'Disable':
                     with open(os.path.join(dir_path, 'disable.txt'), 'a') as file:
-                        file.write(f'{check_line}\n')
+                        file.write(f'{check_line}')
                 elif poor_state == 'Disable|NotExist':
                     with open(os.path.join(dir_path, 'disable_or_not_exist.txt'), 'a') as file:
-                        file.write(f'{check_line}\n')
+                        file.write(f'{check_line}')
                 elif poor_state == 'Ok':
                     with open(os.path.join(dir_path, 'ok.txt'), 'a') as file:
-                        file.write(f'{check_line}\n')
+                        file.write(f'{check_line}')
 
                 with open(os.path.join(dir_path, 'log.txt'), 'a') as log:
                     log.write(f'{response.text}\n')
