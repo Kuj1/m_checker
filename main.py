@@ -1,4 +1,5 @@
 import os
+from typing import Any
 
 import requests
 from fake_useragent import UserAgent
@@ -26,7 +27,7 @@ print(title.renderText('e-Mail  checker'))
 file_input = str(input('Enter file name: '))
 
 
-def proxy_mover(number: int) -> dict:
+def proxy_mover(number: int) -> Any:
     """
     Function moves on proxy an return it
     :param number: number of proxy
@@ -34,17 +35,13 @@ def proxy_mover(number: int) -> dict:
     """
     with open('proxy.txt', 'r') as proxy:
         proxy_list = [x.replace('\n', '') for x in proxy]
-        if number <= len(proxy_list):
+        try:
             proxies = {
                 'https': f'http://{proxy_list[number]}'
             }
             return proxies
-
-        else:
-            proxies = {
-                'https': f'http://{proxy_list[number]}'
-            }
-            return proxies
+        except IndexError:
+            return None
 
 
 def main() -> None:
