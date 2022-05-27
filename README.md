@@ -15,10 +15,18 @@
 - Скопируйте в директорию со скриптом файл, в котором содержаться `email'ы`, вида: `email;pass;data;etc`,
 - Скопируйте в директорию со скриптом файл, в котором содержаться `proxy`, вида: `login:pass@xxx.xxx.xxx.xxx:xxxx`,
 - В терминале, перейдите в директории со скриптом -> скопируйте и выполните скрипт ниже:
+
+        
+### Если Linux / MacOs
 ```bash
     virtualenv venv && \
     source venv/bin/activate && \
     pip install -r requirements.txt
+```
+
+### Если Windows
+```bash
+    python -m venv env && env\Scripts\activate && pip install -r requirements.txt
 ```
 P.S: Название всех файлов должно начинаться с маленькой буквы и состоять из букв латинского алфавита.
 
